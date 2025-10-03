@@ -1,11 +1,11 @@
 # del keyword
 # used to delete a variable or an object properties or object itself
 
-class Student:
+class StudentBasic:
     def __init__(self, name):
         self.name = name
         
-s1 = Student("aastha")
+s1 = StudentBasic("aastha")
 print(s1.name)
 del s1
 # print(s1.name)
@@ -131,7 +131,71 @@ class Toyota(Mars):
         
 
 mars1 = Toyota("fortuner", "diesel")
-print(mars1.type)           
+print(mars1.type) 
+
+
+class Person1:
+    name="anonymous"
+    # def changeName(self, name):
+        # self.name = name
+        # Person1.name = name
+        # self.__class__.name = name  # same as above line
+    @classmethod
+    def changeName(cls, name):
+        cls.name = name
+p1 = Person1()
+p1.changeName("Shreya") 
+print(p1.name)
+print(Person1.name)
+
+# INSTANCE METHOD
+# A method that is associated with an instance of a class. It can access and modify the instance's attributes and other methods.
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        return f"{self.name} is barking"
+
+    def get_age(self):
+        return self.age
+
+    def set_age(self, age):
+        self.age = age
+
+dog1 = Dog("Buddy", 3)
+print(dog1.bark())
+print(dog1.get_age())
+dog1.set_age(4)
+print(dog1.get_age())
+
+# @property decorator
+
+class Student:
+    def __init__(self, phy, chem, math):
+        self.phy = phy
+        self.chem = chem
+        self.math = math
+        # self.percentage = str((phy + chem + math) / 3) + "%"
+
+    # def clacPercentage(self):
+    #     self.percentage = str((self.phy + self.chem + self.math) /3) + "%" 
+    @property
+    def percentage(self):
+        return str((self.phy + self.chem + self.math) /3) + "%"  
+
+stu1 = Student(90, 80, 70)
+print(stu1.percentage)  # 80.0% 
+
+stu1.phy = 100
+print(stu1.phy)  # 80.0%
+
+print(stu1.percentage)  # 80.0%  # still 80.0% not updated
+
+
+
+
        
 
 
